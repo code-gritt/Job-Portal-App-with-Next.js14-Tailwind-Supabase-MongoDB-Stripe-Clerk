@@ -19,7 +19,7 @@ function Header({ user, profileInfo }) {
     {
       label: "Feed",
       path: "/feed",
-      show: profileInfo,
+      show: true,
     },
     {
       label: "Login",
@@ -44,17 +44,17 @@ function Header({ user, profileInfo }) {
     {
       label: "Jobs",
       path: "/jobs",
-      show: profileInfo,
+      show: true,
     },
     {
       label: "Membership",
       path: "/membership",
-      show: profileInfo,
+      show: true,
     },
     {
       label: "Account",
       path: "/account",
-      show: profileInfo,
+      show: true,
     },
   ];
 

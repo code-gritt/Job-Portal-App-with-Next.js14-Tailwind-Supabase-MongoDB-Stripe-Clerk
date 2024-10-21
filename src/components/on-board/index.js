@@ -10,7 +10,7 @@ import {
   recruiterOnboardFormControls,
 } from "@/utils";
 import { useUser } from "@clerk/nextjs";
-// import { createProfileAction } from "@/actions";
+import { createProfileAction } from "@/actions";
 // import { createClient } from "@supabase/supabase-js";
 
 // const supabaseClient = createClient(
@@ -77,26 +77,26 @@ function OnBoard() {
     );
   }
 
-  // async function createProfile() {
-  //   const data =
-  //     currentTab === "candidate"
-  //       ? {
-  //           candidateInfo: candidateFormData,
-  //           role: "candidate",
-  //           isPremiumUser: false,
-  //           userId: user?.id,
-  //           email: user?.primaryEmailAddress?.emailAddress,
-  //         }
-  //       : {
-  //           recruiterInfo: recruiterFormData,
-  //           role: "recruiter",
-  //           isPremiumUser: false,
-  //           userId: user?.id,
-  //           email: user?.primaryEmailAddress?.emailAddress,
-  //         };
+  async function createProfile() {
+    const data =
+      currentTab === "candidate"
+        ? {
+            candidateInfo: candidateFormData,
+            role: "candidate",
+            isPremiumUser: false,
+            userId: user?.id,
+            email: user?.primaryEmailAddress?.emailAddress,
+          }
+        : {
+            recruiterInfo: recruiterFormData,
+            role: "recruiter",
+            isPremiumUser: false,
+            userId: user?.id,
+            email: user?.primaryEmailAddress?.emailAddress,
+          };
 
-  //   await createProfileAction(data, "/onboard");
-  // }
+    await createProfileAction(data, "/onboard");
+  }
 
   console.log(candidateFormData);
 
@@ -116,7 +116,7 @@ function OnBoard() {
         </div>
         <TabsContent value="candidate">
           <CommonForm
-            // action={createProfile}
+            action={createProfile}
             formData={candidateFormData}
             setFormData={setCandidateFormData}
             formControls={candidateOnboardFormControls}
@@ -132,7 +132,7 @@ function OnBoard() {
             formData={recruiterFormData}
             setFormData={setRecruiterFormData}
             isBtnDisabled={!handleRecuiterFormValid()}
-            // action={createProfile}
+            action={createProfile}
           />
         </TabsContent>
       </Tabs>

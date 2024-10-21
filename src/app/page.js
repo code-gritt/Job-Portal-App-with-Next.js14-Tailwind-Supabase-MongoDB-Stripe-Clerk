@@ -1,4 +1,4 @@
-// import { fetchProfileAction } from "@/actions";
+import { fetchProfileAction } from "@/actions";
 import HomepageButtonControls from "@/components/homepage-button-controls";
 import { Button } from "@/components/ui/button";
 import { currentUser } from "@clerk/nextjs";
@@ -7,8 +7,8 @@ import { Fragment } from "react";
 
 async function Home() {
   const user = await currentUser();
-  const profileInfo = null;
-  // const profileInfo = await fetchProfileAction(user?.id);
+
+  const profileInfo = await fetchProfileAction(user?.id);
 
   if (user && !profileInfo?._id) redirect("/onboard");
 
