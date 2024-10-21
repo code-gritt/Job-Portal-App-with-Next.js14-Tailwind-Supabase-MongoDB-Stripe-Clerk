@@ -5,11 +5,12 @@ import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { Fragment } from "react";
 
-export default function Home() {
-  // const user = await currentUser();
+async function Home() {
+  const user = await currentUser();
+  const profileInfo = null;
   // const profileInfo = await fetchProfileAction(user?.id);
 
-  // if (user && !profileInfo?._id) redirect("/onboard");
+  if (user && !profileInfo?._id) redirect("/onboard");
 
   return (
     <>
@@ -29,10 +30,10 @@ export default function Home() {
                     Build your best job community starting from here.
                   </h1>
                   <div className="w-full mt-6 flex items-center text-white justify-start gap-2">
-                    {/* <HomepageButtonControls
-                      user={JSON.parse(JSON.stringify(user))}
-                      profileInfo={profileInfo}
-                    /> */}
+                    <HomepageButtonControls
+                    // user={JSON.parse(JSON.stringify(user))}
+                    // profileInfo={profileInfo}
+                    />
                   </div>
                 </div>
               </section>
@@ -50,3 +51,4 @@ export default function Home() {
     </>
   );
 }
+export default Home;
